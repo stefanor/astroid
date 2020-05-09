@@ -1,0 +1,40 @@
+---
+language: cpp
+dist: focal
+addons:
+  apt:
+    packages:
+      - cmake
+      - cmark
+      - gnupg
+      - libboost-date-time-dev
+      - libboost-filesystem-dev
+      - libboost-log-dev
+      - libboost-program-options-dev
+      - libboost-system-dev
+      - libboost-test-dev
+      - libboost-thread-dev
+      - libgirepository1.0-dev
+      - libglibmm-2.4-dev
+      - libgmime-3.0-dev
+      - libgtkmm-3.0-dev
+      - libnotmuch-dev
+      - libpeas-dev
+      - libprotobuf-dev
+      - libsass-dev
+      - libsoup2.4-dev
+      - libvte-2.91-dev
+      - libwebkit2gtk-4.0-dev
+      - ninja-build
+      - notmuch
+      - pkg-config
+      - protobuf-compiler
+      - python3-gi
+      - scdoc
+      - w3m
+      - xauth
+      - xvfb
+script:
+  - cmake -H. -Bbuild -GNinja
+  - cmake --build build
+  - (cd build; xvfb-run ctest --output-on-failure)
